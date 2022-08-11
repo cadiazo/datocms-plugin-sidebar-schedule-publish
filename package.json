@@ -2,6 +2,7 @@
   "name": "datocms-plugin-sidebar-schedule-publish",
   "description": "Allow scheduling the publish/unpublish by the date fields of a modelApiKey.",
   "version": "0.1.1",
+  "homepage": "https://github.com/cadiazo/datocms-plugin-sidebar-schedule-publish#readme",
   "files": [
     "build",
     "docs"
