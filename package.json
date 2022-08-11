@@ -1,17 +1,28 @@
 {
-  "name": "my-extension-plugin",
-  "version": "0.1.0",
-  "private": true,
+  "name": "datocms-plugin-sidebar-schedule-publish",
+  "description": "Allow scheduling the publish/unpublish by the date fields of a modelApiKey.",
+  "version": "0.1.1",
+  "files": [
+    "build",
+    "docs"
+  ],
+  "keywords": [
+    "datocms-plugin",
+    "sidebar",
+    "schedule publish"
+  ],
   "dependencies": {
-    "@types/node": "^16.11.44",
-    "@types/react": "^17.0.47",
-    "@types/react-dom": "^17.0.17",
+    "@datocms/cma-client": "^1.0.1",
+    "@types/node": "^16.11.27",
+    "@types/react": "^17.0.44",
+    "@types/react-dom": "^17.0.15",
     "datocms-plugin-sdk": "^0.5.2",
     "datocms-react-ui": "^0.5.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "5.0.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.6.3",
+    "luxon": "^2.5.0"
   },
   "scripts": {
     "start": "cross-env BROWSER='none' PUBLIC_URL='/' react-scripts start",
@@ -38,12 +49,14 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "@types/luxon": "^2.3.1"
   },
   "datoCmsPlugin": {
-    "title": "",
-    "previewImage": "",
-    "coverImage": "",
-    "entryPoint": "build/index.html"
+    "title": "Sidebar Schedule Publish",
+    "previewImage": "docs/preview.gif",
+    "coverImage": "docs/cover.png",
+    "entryPoint": "build/index.html",
+    "permissions": ["currentUserAccessToken"]
   }
 }

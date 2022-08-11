@@ -1,10 +1,39 @@
-import { connect } from 'datocms-plugin-sdk';
-import { render } from './utils/render';
-import ConfigScreen from './entrypoints/ConfigScreen';
+import { connect, IntentCtx, ModelBlock, RenderItemFormSidebarPanelCtx } from 'datocms-plugin-sdk';
 import 'datocms-react-ui/styles.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ConfigScreen from './entrypoints/ConfigScreen';
+import { CustomPanel } from './entrypoints/CustomSidebarPanel';
+import { render } from './utils/render';
+
+const CUSTOM_SIDEBAR_ID = "sidebarSchedulePublish";
 
 connect({
+  itemFormSidebarPanels(model: ModelBlock, ctx: IntentCtx) {
+    const { modelApiKey } = ctx.plugin.attributes.parameters;
+    if(model.attributes.api_key === modelApiKey)
+      return [
+        {
+          id: CUSTOM_SIDEBAR_ID,
+          label: 'Sincronizar schedule',
+          startOpen: true,
+        },
+      ];
+    return [];
+  },
+  renderItemFormSidebarPanel(
+    sidebarPanelId,
+    ctx: RenderItemFormSidebarPanelCtx,
+  ) {
+    ReactDOM.render(
+      <React.StrictMode>
+        <CustomPanel ctx={ctx} />
+      </React.StrictMode>,
+      document.getElementById('root'),
+    );
+  },
   renderConfigScreen(ctx) {
     return render(<ConfigScreen ctx={ctx} />);
   },
 });
+
