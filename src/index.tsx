@@ -11,7 +11,8 @@ const CUSTOM_SIDEBAR_ID = "sidebarSchedulePublish";
 connect({
   itemFormSidebarPanels(model: ModelBlock, ctx: IntentCtx) {
     const { modelApiKey } = ctx.plugin.attributes.parameters;
-    if(model.attributes.api_key === modelApiKey)
+    const keys = (modelApiKey as string)?.split(",");
+    if(keys?.includes(model.attributes.api_key))
       return [
         {
           id: CUSTOM_SIDEBAR_ID,
